@@ -21,16 +21,15 @@ public class FlippingBits {
         return ~n & 0xFFFFFFFFL;
     }
 
-    public static String convertToBinary (long number, int base){
+    public static String convertToBinary(long number, int base) {
+        if (number == 0) {
+            return "0";
+        }
         String result = "";
         long aux = number;
-        while (aux > 0){
-            if(aux%base == 0){
-                result += "0";
-            }else {
-                result += "1";
-            }
-            aux = aux/2;
+        while (aux > 0) {
+            result = (aux%base) + result;
+            aux = aux / base;
         }
         return result;
     }
