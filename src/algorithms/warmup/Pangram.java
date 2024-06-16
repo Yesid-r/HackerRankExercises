@@ -1,7 +1,9 @@
 package algorithms.warmup;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class Pangram {
 
@@ -32,18 +34,15 @@ public class Pangram {
         // Write your code here
         String sMinus = s.toLowerCase();
 
-        Map<Integer, Integer> numbers = new HashMap<>();
+        Set<Character> letters = new HashSet<>();
 
         for (int i = 0; i < s.length(); i++) {
-            if((int) sMinus.charAt(i) != 32){
-                int pos = (int) sMinus.charAt(i);
-                numbers.put(pos, 1);
+            Character c = sMinus.charAt(i);
+            if( Character.isLetter(c) ){
+                letters.add(c);
             }
 
         }
-        if(numbers.size() == 26){
-            return "pangram";
-        }
-        return "not pangram";
+        return (letters.size() == 26 )? "pangram" : "not pangram";
     }
 }
